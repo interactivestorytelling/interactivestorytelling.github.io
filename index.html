@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Storytelling</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .tab-bar {
+        display: flex;
+        background: #2c3e50;
+    }
+
+    .tab-button {
+        padding: 14px 24px;
+        border: none;
+        background: #34495e;
+        color: white;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background 0.2s;
+    }
+
+    .tab-button:hover {
+        background: #3d566e;
+    }
+
+    .tab-button.active {
+        background: #1abc9c;
+        font-weight: bold;
+    }
+
+    .content {
+        flex: 1;
+    }
+
+    iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        display: none;
+    }
+
+    iframe.active {
+        display: block;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="tab-bar">
+    <button class="tab-button active" onclick="showTab('slubber', this)">
+        Slubber99
+    </button>
+
+    <button class="tab-button" onclick="showTab('gullion', this)">
+        Gullion99
+    </button>
+</div>
+
+<div class="content">
+    <iframe id="slubber" class="active" src="Slubber99.html"></iframe>
+    <iframe id="gullion" src="Gullion99.html"></iframe>
+</div>
+
+<script>
+function showTab(tabId, button) {
+
+    // Hide all iframes
+    document.querySelectorAll("iframe").forEach(frame => {
+        frame.classList.remove("active");
+    });
+
+    // Remove active state from buttons
+    document.querySelectorAll(".tab-button").forEach(btn => {
+        btn.classList.remove("active");
+    });
+
+    // Show selected iframe
+    document.getElementById(tabId).classList.add("active");
+
+    // Highlight selected button
+    button.classList.add("active");
+}
+</script>
+
+</body>
+</html>
